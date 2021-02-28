@@ -94,41 +94,6 @@ app.post('/api/candidates', ({ body }, res) => {
     });
 });
 
-// db.all(`SELECT * FROM candidates`, (err, rows) => {
-// 	console.log(rows)
-// });
-
-// // GET a single candidate 
-// db.get(`SELECT * FROM candidates WHERE id = 2`, (err, row) => {
-// 	if (err) {
-// 		return console.log(err);
-// 	};
-
-	// console.log(row);
-// });
-
-// // DELETE a candidate
-// db.run(`DELETE FROM candidates WHERE id = ?`, 1, function(err, result) {
-//     if (err) {
-//         return console.log(err);
-//     };
-
-    // console.log(result, this, this.changes, this.sql);
-// });
-
-// // Create a candidate
-// const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected)
-//     VALUES(?, ?, ?, ?)`;
-// const params = [1, 'Ronald', 'Firbank', 1];
-// // ES5 functino, not arrow function, to use 'this'
-// db.run(sql, params, function(err, result) {
-//     if (err) {
-//         return console.log(err);
-//     };
-
-    // console.log(result, this.lastID);
-// });
-
 // Default response for any other requests(Not Found) Catch all
 app.use((req, res) => {
 	res.status(404).end();
