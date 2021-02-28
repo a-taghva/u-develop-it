@@ -125,6 +125,30 @@ app.delete('/api/parties/:id', (req, res) => {
     });
 });
 
+app.put('/api/candidate/:id', (req, res) => {
+    const errors = inputCheck(req.body, 'party_id');
+
+    if (errors) {
+        return res.status(400).json({ error: errors });
+    };
+
+    const sql = `UPDATE candidates SET party_id = ?
+                 WHERE id = ?`;
+    const params = [req.body.party_id, req.params.id];
+
+    db.run(sql, params, function(err, result) {
+        if (err) {
+            return res.status(400).json({ error: err.message });
+        };
+
+        res.json({
+            message: 'success',
+            data: req.body,
+            changes: this.changes
+        });
+    });
+});
+
 app.post('/api/candidates', ({ body }, res) => {
     const errors = inputCheck(body, 'first_name', 'last_name', 'industry_connected');
 
